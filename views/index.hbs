@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/picnic@6/picnic.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <style>
+    main {
+      width: 100%;
+      border: 1px solid #ddd;
+    }
+    table, canvas {
+      width: 99%;
+    }
+    th {
+      cursor: pointer;
+    }
+    h2 {
+      padding-left: 10px;
+    }
+    h1 {
+      padding-left: 10px;
+    }
+    p {
+      padding-left: 10px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <main>
+    <ul>
+        <li><a class="active" href="/">Home</a></li>
+    <li><a class="active" href="/index">Stat Engine</a></li>
+    <li><a class="active" href="/course">Course Breakdown</a></li>
+  </li>
+  </ul>
+   <h1>PGA Tour Stat Engine</h1>
+    <p>Abbreviations for stat rankings: T2G = Tee To Green. ATG = Around The Green. Prox = Proximity To Hole. SGP = Strokes Gained Putting. SGT = Strokes Gained Total. SCR = Scrambling. DD = Driving Distance. OFT = Off The Tee. APP = Approaches. SS = Sand Saves. GIR = Greens In Regulation. DA = Driving Accuracy.</p>
+    <h2>Click Header to sort for stat</h2>
+    <table id="stats">
+      <tr>
+        <th onclick="sortTable(0)">Name</th>
+        <th onclick="sortTable(1)">T2G</th>
+        <th onclick="sortTable(2)">ATG</th>
+        <th onclick="sortTable(3)">Prox</th>
+        <th onclick="sortTable(4)">SGP</th>
+        <th onclick="sortTable(5)">SGT</th>
+        <th onclick="sortTable(6)">SCR</th>
+        <th onclick="sortTable(7)">DD</th>
+        <th onclick="sortTable(8)">OFT</th>
+        <th onclick="sortTable(9)">APP</th>
+        <th onclick="sortTable(10)">SS</th>
+        <th onclick="sortTable(11)">GIR</th>
+        <th onclick="sortTable(12)">DA</th>
+      </tr>
+      {{#each users}}
+        <tr>
+
+          <td>{{this.Name}}</td>
+          <td>{{this.T2G}}</td>
+          <td>{{this.ATG}}</td>
+          <td>{{this.Prox}}</td>
+          <td>{{this.SGP}}</td>
+          <td>{{this.SGT}}</td>
+          <td>{{this.Scramble}}</td>
+          <td>{{this.DD}}</td>
+          <td>{{this.OFT}}</td>
+          <td>{{this.Approach}}</td>
+          <td>{{this.SS}}</td>
+          <td>{{this.GIR}}</td>
+          <td>{{this.DA}}</td>
+        </tr>
+      {{/each}}
+
+    </table>
+    <script>
+    function sortTable(n) {
+      var table, rows, switching, i, x, y, z, shouldSwitch, dir, switchcount = 0;
+      table = document.getElementById("stats");
+      switching = true;
+      //Set the sorting direction to ascending:
+      dir = "asc";
+      /*Make a loop that will continue until
+      no switching has been done:*/
+      while (switching) {
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /*Loop through all table rows (except the
+        first, which contains table headers):*/
+        for (i = 1; i < (rows.length - 1); i++) {
+          //start by saying there should be no switching:
+          shouldSwitch = false;
+          /*Get the two elements you want to compare,
+          one from current row and one from the next:*/
+          x = rows[i].getElementsByTagName("TD")[n];
+          y = rows[i + 1].getElementsByTagName("TD")[n];
+          //z = rows[i + 2].getElementsByTagName("TD")[n];
+
+          /*check if the two rows should switch place,
+          based on the direction, asc or desc:*/
+          if (Number(x.innerHTML) > Number(y.innerHTML)) {
+            //if so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+        if (shouldSwitch) {
+          /*If a switch has been marked, make the switch
+          and mark that a switch has been done:*/
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+        }
+      }
+    }
+    </script>
+  </main>  <!-- Note: put your API key here -->
+  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=YOUR_API_KEY&callback=initMap"></script> -->
+</body>
+</html>

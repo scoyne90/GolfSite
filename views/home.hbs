@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<title>Homepage</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+    body,h1,h5 {font-family: "Raleway", sans-serif}
+    body, html {height: 100%}
+    .bgimg {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/8f/Augusta_National_Golf_Club%2C_Hole_10_%28Camellia%29.jpg');
+        min-height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+
+    a:link, a:visited {
+        background-color: grey;
+        color: white;
+        padding: 20px 55px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    a:hover, a:active {
+        background-color: black;
+    }
+</style>
+<body>
+
+<div class="bgimg w3-display-container w3-text-white">
+    <div class="w3-display-middle w3-jumbo">
+        <p>Golf Stats</p>
+    </div>
+    <div class="w3-display-topleft w3-container w3-xlarge">
+        <p><button onclick="document.getElementById('menu').style.display='block'" class="w3-button w3-black">Price Menu</button></p>
+        <p>
+
+            <button onclick="document.getElementById('contact').style.display='block'" class="w3-button w3-black">Features</button></p>
+    </div>
+    <div class="w3-display-bottomleft w3-container">
+        <p class="w3-xlarge">About website....... This website is a basic version of fantasynational.com which is a subscription service
+            for fantasy sports users on websites like DraftKings. The website provides features like a sortable stat engine display of players
+        stats in a table display and a visual course breakdown template page which allows users to quickly see what skills matter each week.</p>
+
+    </div>
+</div>
+
+<!-- Menu Modal -->
+<div id="menu" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom">
+        <div class="w3-container w3-black w3-display-container">
+            <span onclick="document.getElementById('menu').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+            <h1>Future Price Range</h1>
+        </div>
+        <div class="w3-container">
+            <h5>1 week access <b>$2.50</b></h5>
+            <h5>1 month access <b>$7</b></h5>
+            <h5>1 year access <b>$50</b></h5>
+        </div>
+
+    </div>
+</div>
+
+<!-- Contact Modal -->
+<div id="contact" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom">
+        <div class="w3-container w3-black">
+            <span onclick="document.getElementById('contact').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+            <h1>Features</h1>
+        </div>
+        <div class="w3-container">
+            <a href="/index" style="margin-left: 20%;">Stat Engine Page</a>
+            <a href="/course">Course Breakdown Page</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
